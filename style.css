@@ -5,7 +5,7 @@
   text-decoration: none;
 }
 
-header {
+.header {
   position: fixed;
   top: 0;
   padding: 20px;
@@ -17,7 +17,7 @@ header {
   background-color: crimson;
 }
 
-header>nav {
+.header>nav {
   display: flex;
 }
 
@@ -39,7 +39,7 @@ header>nav {
   outline: 0;
 }
 
-main {
+.main {
   margin-top: 65px;
   display: flex;
 }
@@ -54,6 +54,7 @@ main {
   background-color: white;
   transition: ease-in 0.3s;
 }
+
 .sidebar_hidden {
   opacity: 0;
   left: 0;
@@ -65,8 +66,36 @@ main {
   .sidebar {
     position: fixed;
   }
+
   .sidebar_hidden {
     left: -300px;
     margin-left: 0;
   }
+}
+
+.cubes {
+  display: flex;
+}
+
+.cube_hide {
+  display: none;
+}
+
+.cube {
+  margin-right: 1em;
+  width: 60px;
+  height: 60px;
+  background-color: teal;
+}
+
+.cube_red {
+  background-color: red;
+}
+
+.cube_green {
+  background-color: green;
+}
+
+.cube_blue {
+  background-color: blue;
 }

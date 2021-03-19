@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
+    <header class="header">
       <button id="buttonMenu" class="header__button-menu">
         Menu
       </button>
@@ -17,14 +17,14 @@
           <a href="/">Home</a>
         </div>
         <div class="nav__link">
-          <a href="/">About</a>
+          <a href="/checkboxes.html">Checkboxes</a>
         </div>
         <div class="nav__link">
           <a href="/">Write us</a>
         </div>
       </nav>
     </header>
-    <main>
+    <main class="main">
       <aside class="sidebar">Sidebar content</aside>
       <section>
         Main Content
@@ -43,6 +43,10 @@
         }
         sidebar.classList.toggle('sidebar_hidden');
       });
+    </script>
+    <script src="./generalSequence.js"></script>
+    <script>
+      console.log(generalSequence('aababba', 'abbaabcd'));
     </script>
   </body>
 </html>
