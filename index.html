@@ -1,37 +1,48 @@
+<!-- Время: 34:07.21-->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internship</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>
-      <h2>Intership</h2>
+      <button id="buttonMenu" class="header__button-menu">
+        Menu
+      </button>
+      <nav>
+        <div class="nav__link">
+          <a href="/">Home</a>
+        </div>
+        <div class="nav__link">
+          <a href="/">About</a>
+        </div>
+        <div class="nav__link">
+          <a href="/">Write us</a>
+        </div>
+      </nav>
     </header>
     <main>
-      <p>
-        Input array: <code>[1,2,3,4,5]</code></br>
-        Shifted array: [<code id="shiftedArray"></code>]</br>
-        Code:
-        <pre>
-          function shiftedArray(array, k) {
-              return array.map((el, index) => {
-                  if (index + k - 1 >= array.length) {
-                      return array[index + k - array.length - 1];
-                  }
-                  return array[index + k - 1];
-              });
-          }
-        </pre>
-      </p>
+      <aside class="sidebar">Sidebar content</aside>
+      <section>
+        Main Content
+      </section>
     </main>
-    <footer>
-    </footer>
-    <script src="./shiftedArray.js"></script>
     <script>
-      let code = document.getElementById('shiftedArray');
-      code.append(shiftedArray([1,2,3,4,5], 3));
+      let buttonMenu = document.getElementById('buttonMenu');
+      let sidebar = document.getElementsByClassName('sidebar')[0];
+      if (document.documentElement.clientWidth <= 1200) {
+        sidebar.classList.toggle('sidebar_hidden');
+      }
+      buttonMenu.addEventListener('click', ()=>{
+        if ( sidebar.style.opacity == 0){
+          sidebar.classList.toggle('sidebar_hidden');
+          return;
+        }
+        sidebar.classList.toggle('sidebar_hidden');
+      });
     </script>
   </body>
 </html>
