@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship</title>
+  </head>
+  <body>
+    <header>
+      <h2>Intership</h2>
+    </header>
+    <main>
+      <p>
+        Input array: <code>[1,2,3,4,5]</code></br>
+        Shifted array: [<code id="shiftedArray"></code>]</br>
+        Code:
+        <pre>
+          function shiftedArray(array, k) {
+              return array.map((el, index) => {
+                  if (index + k - 1 >= array.length) {
+                      return array[index + k - array.length - 1];
+                  }
+                  return array[index + k - 1];
+              });
+          }
+        </pre>
+      </p>
+    </main>
+    <footer>
+    </footer>
+    <script src="./shiftedArray.js"></script>
+    <script>
+      let code = document.getElementById('shiftedArray');
+      code.append(shiftedArray([1,2,3,4,5], 3));
+    </script>
+  </body>
+</html>
