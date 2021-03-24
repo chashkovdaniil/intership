@@ -27,18 +27,21 @@
     </header>
     <main class="main">
       <section>
-        <div class="checkboxes">
-          <label for="cube1">Cube 1</label>
-          <input type="checkbox" id="cube1" name="cube" />
-          <label for="cube2">Cube 2</label>
-          <input type="checkbox" id="cube2" name="cube" />
-          <label for="cube3">Cube 3</label>
-          <input type="checkbox" id="cube3" name="cube" />
+        <div class="checkboxesCubes">
+          <label>Cube 1
+            <input type="checkbox" data-cube-id="1" />
+          </label>
+          <label>Cube 2
+            <input type="checkbox" data-cube-id="2" />
+          </label>
+          <label>Cube 3
+            <input type="checkbox" data-cube-id="3" />
+          </label>
         </div>
         <div class="cubes">
-          <div class="cube cube_red" id="cube1">1</div>
-          <div class="cube cube_green" id="cube2">2</div>
-          <div class="cube cube_blue" id="cube3">3</div>
+          <div class="cube cube_red" id="cube" data-cube-id="1">1</div>
+          <div class="cube cube_green" id="cube" data-cube-id="2">2</div>
+          <div class="cube cube_blue" id="cube" data-cube-id="3">3</div>
         </div>
       </section>
     </main>

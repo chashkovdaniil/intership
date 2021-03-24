@@ -1,61 +1,37 @@
-let cubesCheckboxes = document.querySelectorAll(
-  'input[type=checkbox][name=cube]'
-);
+let checkboxesCubes = document.querySelector('.checkboxesCubes');
 const buttonControlCheckboxes = document.querySelector(
   '#controlCheckbox'
 );
-const handleClickControlButton = (checkboxes) => () => {
-  if (checkCheckboxes(checkboxes)) {
-    showAll(checkboxes);
-    return;
-  }
-  hideAll(checkboxes);
+buttonControlCheckboxes.dataset.hidden = false;
+const getCubeByCheckbox = (checkbox) => {
+  let cubeId = checkbox.dataset.cubeId;
+  return document.querySelector(`div[id="cube"][data-cube-id="${cubeId}"]`);
 }
-const handleChangeCheckbox = (checkboxes) => (event) => {
-  let cube = document.querySelector(`.cube#${event.target.id}`);
-  let isHide = checkCheckboxes(checkboxes) ? 'show' : 'hide';
-
-  cube.classList.toggle('cube_hide');
-
-  toggleControlButton(isHide);
-}
-const toggleControlButton = (toggle) => {
-  if (toggle == 'hide') {
-    buttonControlCheckboxes.innerHTML = 'Hide all';
-    return;
-  }
-  buttonControlCheckboxes.innerHTML = 'Show all';
-}
-const checkCheckboxes = (checkboxes) => {
-  let areChecked = false;
-  checkboxes.forEach(({ checked }) => {
-    return checked ? areChecked = true : false
-  });
-  return areChecked;
-}
-const hideAll = (checkboxes) => {
-  checkboxes.forEach((elem) => {
-    let id = elem.getAttribute('id');
-    let cube = document.querySelector(`.cube#${id}`);
-    elem.checked = true;
+const hideCube = (cube, condition) => {
+  if (condition) {
     cube.classList.add('cube_hide');
-  });
-  toggleControlButton('show');
+    return;
+  }
+  cube.classList.remove('cube_hide');
 }
-const showAll = (checkboxes) => {
-  checkboxes.forEach((elem) => {
-    let id = elem.getAttribute('id');
-    let cube = document.querySelector(`.cube#${id}`);
-    elem.checked = false;
-    cube.classList.remove('cube_hide');
-  });
-  toggleControlButton('hide');
-}
-
-cubesCheckboxes.forEach((elem) => {
-  elem.addEventListener('change', handleChangeCheckbox(cubesCheckboxes));
+checkboxesCubes.addEventListener('click', (event) => {
+  if (event.target.type == "checkbox") {
+    let cube = getCubeByCheckbox(event.target);
+    hideCube(cube, !cube.classList.contains('cube_hide'));
+  }
 });
-buttonControlCheckboxes.addEventListener(
-  'click',
-  handleClickControlButton(cubesCheckboxes)
-);
+buttonControlCheckboxes.addEventListener('click', () => {
+  let hidden = buttonControlCheckboxes.dataset.hidden === "false";
+  let checkboxes = checkboxesCubes.children;
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].children[0].checked = hidden;
+    let cube = getCubeByCheckbox(checkboxes[i].children[0]);
+    hideCube(cube, hidden);
+  }
+  buttonControlCheckboxes.dataset.hidden = hidden;
+  if(hidden) {
+    buttonControlCheckboxes.innerHTML = "Show";
+    return;
+  }
+  buttonControlCheckboxes.innerHTML = "Hide";
+});
